@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Future Coder SAM — Coder, builder, sharer</title>
+<meta name="description" content="Future Coder SAM (@futurecoder_sam) — a coder who builds and shares on Instagram. 13 posts, 215 followers." />
+<meta property="og:type" content="profile" />
+<meta property="og:title" content="Future Coder SAM (@futurecoder_sam)" />
+<meta property="og:description" content="Coder. Building and sharing on Instagram." />
+<meta name="theme-color" content="#0a0b10" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0b10'/%3E%3Ctext x='32' y='43' font-family='monospace' font-size='26' font-weight='700' fill='%235cf2c8' text-anchor='middle'%3EFS%3C/text%3E%3C/svg%3E" />
+<style>
+  :root{
+    --bg:#080910;
+    --panel:#0f111a;
+    --panel-2:#141724;
+    --line:rgba(255,255,255,.09);
+    --text:#eef1f8;
+    --muted:#9aa3b8;
+    --accent:#5cf2c8;
+    --accent-2:#7c8cff;
+    --pink:#ff6ba8;
+    --radius:20px;
+    --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,"Helvetica Neue",Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family:var(--sans);
+    color:var(--text);
+    background:var(--bg);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  .glow{position:fixed;inset:0;pointer-events:none;z-index:0;
+    background:
+      radial-gradient(680px 480px at 12% -8%, rgba(92,242,200,.16), transparent 65%),
+      radial-gradient(620px 460px at 88% 4%, rgba(124,140,255,.18), transparent 62%),
+      radial-gradient(700px 520px at 50% 108%, rgba(255,107,168,.10), transparent 65%);
+  }
+  .grid-lines{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+    background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+    background-size:64px 64px;
+    mask-image:radial-gradient(circle at 50% 30%,#000 0%,transparent 78%);
+    -webkit-mask-image:radial-gradient(circle at 50% 30%,#000 0%,transparent 78%);
+  }
+  .wrap{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:0 22px}
+
+  /* nav */
+  header.nav{position:sticky;top:0;z-index:20;backdrop-filter:blur(14px);
+    background:rgba(8,9,16,.72);border-bottom:1px solid var(--line)}
+  .nav-inner{max-width:1080px;margin:0 auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .brand{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:14px;letter-spacing:.02em;color:var(--text);text-decoration:none}
+  .dot{width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 14px var(--accent)}
+  .nav a.cta-sm{font-size:13.5px;font-weight:600;text-decoration:none;color:#08110f;background:var(--accent);
+    padding:9px 16px;border-radius:999px;transition:transform .18s ease,box-shadow .18s ease}
+  .nav a.cta-sm:hover{transform:translateY(-1px);box-shadow:0 8px 26px rgba(92,242,200,.28)}
+
+  /* hero */
+  .hero{padding:76px 0 34px;display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center}
+  .kicker{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:12.5px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--accent);border:1px solid rgba(92,242,200,.28);background:rgba(92,242,200,.07);
+    padding:7px 13px;border-radius:999px}
+  h1{margin:20px 0 0;font-size:clamp(2.3rem,5.6vw,3.9rem);line-height:1.04;letter-spacing:-.035em;font-weight:800}
+  h1 .grad{background:linear-gradient(100deg,var(--accent),var(--accent-2) 55%,var(--pink));
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .handle{font-family:var(--mono);color:var(--muted);font-size:15px;margin:14px 0 0}
+  .handle b{color:var(--text);font-weight:600}
+  .lede{color:var(--muted);font-size:17px;max-width:46ch;margin:18px 0 0}
+  .btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+  .btn{display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-weight:650;font-size:15px;
+    padding:13px 22px;border-radius:14px;transition:transform .18s ease,box-shadow .18s ease,background .18s ease,border-color .18s ease}
+  .btn-primary{color:#08110f;background:linear-gradient(120deg,var(--accent),#8ef7dd);box-shadow:0 12px 34px rgba(92,242,200,.22)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 44px rgba(92,242,200,.3)}
+  .btn-ghost{color:var(--text);border:1px solid var(--line);background:rgba(255,255,255,.03)}
+  .btn-ghost:hover{border-color:rgba(255,255,255,.24);background:rgba(255,255,255,.06);transform:translateY(-2px)}
+  .btn svg{width:17px;height:17px}
+
+  /* profile card */
+  .card{background:linear-gradient(180deg,var(--panel-2),var(--panel));border:1px solid var(--line);
+    border-radius:26px;padding:26px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+  .avatar{width:96px;height:96px;border-radius:50%;display:grid;place-items:center;font-family:var(--mono);font-weight:700;
+    font-size:32px;color:#08110f;background:conic-gradient(from 210deg,var(--accent),var(--accent-2),var(--pink),var(--accent));
+    box-shadow:0 0 0 4px rgba(8,9,16,1),0 0 0 5px rgba(255,255,255,.12),0 18px 44px rgba(92,242,200,.18)}
+  .card h2{margin:18px 0 2px;font-size:20px;letter-spacing:-.01em}
+  .card .sub{font-family:var(--mono);font-size:13px;color:var(--muted);margin:0}
+  .badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .badge{font-size:12px;font-family:var(--mono);color:var(--muted);border:1px solid var(--line);
+    padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.03)}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:20px}
+  .stat{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:14px;padding:12px 10px;text-align:center}
+  .stat b{display:block;font-size:20px;letter-spacing:-.02em}
+  .stat span{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-family:var(--mono)}
+
+  /* sections */
+  section{padding:56px 0}
+  .sec-head{display:flex;align-items:end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:26px}
+  h3.sec-title{font-size:clamp(1.4rem,3vw,1.9rem);letter-spacing:-.02em;margin:0}
+  .sec-note{color:var(--muted);font-size:14px;margin:0}
+  .rule{height:1px;background:linear-gradient(90deg,var(--line),transparent);margin:0 0 26px}
+
+  .about{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+  .panel{background:linear-gradient(180deg,var(--panel-2),var(--panel));border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+  .panel p{margin:0 0 12px;color:var(--muted);font-size:15.5px}
+  .panel p:last-child{margin-bottom:0}
+  .panel strong{color:var(--text);font-weight:650}
+
+  .code{border:1px solid var(--line);border-radius:var(--radius);background:#0b0d15;overflow:hidden}
+  .code-bar{display:flex;align-items:center;gap:7px;padding:11px 14px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.02)}
+  .code-bar i{width:10px;height:10px;border-radius:50%;display:block}
+  .code-bar i:nth-child(1){background:#ff5f57}.code-bar i:nth-child(2){background:#febc2e}.code-bar i:nth-child(3){background:#28c840}
+  .code-bar span{font-family:var(--mono);font-size:12px;color:var(--muted);margin-left:8px}
+  pre{margin:0;padding:20px;overflow:auto;font-family:var(--mono);font-size:13.5px;line-height:1.75;color:#c8d2ea}
+  .k{color:#7c8cff}.s{color:#5cf2c8}.c{color:#5c6784}.n{color:#ff6ba8}.p{color:#c8d2ea}
+
+  /* links */
+  .links{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+  a.link{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--text);
+    background:linear-gradient(180deg,var(--panel-2),var(--panel));border:1px solid var(--line);
+    border-radius:16px;padding:16px 18px;transition:transform .18s ease,border-color .18s ease,background .18s ease}
+  a.link:hover{transform:translateY(-2px);border-color:rgba(92,242,200,.4);background:rgba(92,242,200,.05)}
+  a.link .ic{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;flex:0 0 auto;
+    background:rgba(92,242,200,.1);color:var(--accent)}
+  a.link .ic svg{width:19px;height:19px}
+  a.link b{display:block;font-size:15px;font-weight:650}
+  a.link small{color:var(--muted);font-size:13px;font-family:var(--mono)}
+  a.link .arrow{margin-left:auto;color:var(--muted);transition:transform .18s ease,color .18s ease}
+  a.link:hover .arrow{transform:translateX(3px);color:var(--accent)}
+
+  footer{border-top:1px solid var(--line);margin-top:40px;padding:26px 0 44px}
+  .foot{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;color:var(--muted);font-size:13px;font-family:var(--mono)}
+  .foot a{color:var(--muted);text-decoration:none;border-bottom:1px dotted rgba(255,255,255,.22)}
+  .foot a:hover{color:var(--accent);border-color:var(--accent)}
+
+  @media (max-width:860px){
+    .hero{grid-template-columns:1fr;padding-top:52px;gap:32px}
+    .about{grid-template-columns:1fr}
+    .card{order:-1}
+    section{padding:44px 0}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="glow"></div>
+<div class="grid-lines"></div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top"><span class="dot"></span>futurecoder_sam</a>
+    <a class="cta-sm" href="https://www.instagram.com/futurecoder_sam/" target="_blank" rel="noopener">Follow on Instagram</a>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap">
+    <div class="hero">
+      <div>
+        <span class="kicker">● Coder &nbsp;·&nbsp; Education</span>
+        <h1>Future Coder <span class="grad">SAM</span></h1>
+        <p class="handle">@<b>futurecoder_sam</b> &nbsp;·&nbsp; building in public</p>
+        <p class="lede">A coder who learns out loud. I build small things, break them, fix them, and post the whole journey on Instagram.</p>
+        <div class="btns">
+          <a class="btn btn-primary" href="https://www.instagram.com/futurecoder_sam/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"/></svg>
+            See my posts
+          </a>
+          <a class="btn btn-ghost" href="mailto:samratbarman1013@gmail.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m3 7 9 6 9-6"/></svg>
+            Get in touch
+          </a>
+        </div>
+      </div>
+
+      <aside class="card" aria-label="Profile summary">
+        <div class="avatar">FS</div>
+        <h2>Future Coder SAM</h2>
+        <p class="sub">@futurecoder_sam</p>
+        <div class="badges">
+          <span class="badge">Coder</span>
+          <span class="badge">Education</span>
+          <span class="badge">Public profile</span>
+        </div>
+        <div class="stats">
+          <div class="stat"><b>13</b><span>Posts</span></div>
+          <div class="stat"><b>215</b><span>Followers</span></div>
+          <div class="stat"><b>40</b><span>Following</span></div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <section id="about">
+      <div class="sec-head">
+        <h3 class="sec-title">About</h3>
+        <p class="sec-note">Short version: I write code and share what I learn.</p>
+      </div>
+      <div class="rule"></div>
+      <div class="about">
+        <div class="panel">
+          <p><strong>Future Coder SAM</strong> is a coder and an Education-category creator on Instagram, where the handle <strong>@futurecoder_sam</strong> has grown to <strong>215 followers</strong> across <strong>13 posts</strong>.</p>
+          <p>The idea is simple: learn something, build something with it, post it. Code is easier to understand when you can watch it being written — including the parts that fail first.</p>
+          <p>Everything I publish lives on Instagram. Follow along there for new posts, or email me if you want to talk code.</p>
+        </div>
+        <div class="code">
+          <div class="code-bar"><i></i><i></i><i></i><span>futurecoder_sam.js</span></div>
+<pre><span class="c">// the loop</span>
+<span class="k">const</span> sam <span class="p">=</span> {
+  name: <span class="s">"Future Coder SAM"</span>,
+  handle: <span class="s">"@futurecoder_sam"</span>,
+  role: <span class="s">"coder"</span>,
+  posts: <span class="n">13</span>,
+  followers: <span class="n">215</span>,
+  mood: <span class="s">"shipping"</span>
+};
+
+<span class="k">while</span> (<span class="k">true</span>) {
+  <span class="k">await</span> learn();
+  <span class="k">await</span> build();
+  <span class="k">await</span> share();   <span class="c">// on Instagram</span>
+}</pre>
+        </div>
+      </div>
+    </section>
+
+    <section id="links">
+      <div class="sec-head">
+        <h3 class="sec-title">Find me</h3>
+        <p class="sec-note">One profile, one inbox.</p>
+      </div>
+      <div class="rule"></div>
+      <div class="links">
+        <a class="link" href="https://www.instagram.com/futurecoder_sam/" target="_blank" rel="noopener">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"/></svg></span>
+          <span><b>Instagram</b><small>@futurecoder_sam</small></span>
+          <span class="arrow">→</span>
+        </a>
+        <a class="link" href="mailto:samratbarman1013@gmail.com">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m3 7 9 6 9-6"/></svg></span>
+          <span><b>Email</b><small>samratbarman1013@gmail.com</small></span>
+          <span class="arrow">→</span>
+        </a>
+        <a class="link" href="https://www.instagram.com/futurecoder_sam/" target="_blank" rel="noopener">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v14H4z"/><path d="M4 10h16M9 5v14"/></svg></span>
+          <span><b>Latest posts</b><small>13 posts on Instagram</small></span>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© <span id="y">2026</span> Future Coder SAM</span>
+    <span>Built from <a href="https://www.instagram.com/futurecoder_sam/" target="_blank" rel="noopener">@futurecoder_sam</a></span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
